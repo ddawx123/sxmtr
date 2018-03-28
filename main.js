@@ -98,7 +98,49 @@ var initEvent = function() {
     });
 };
 //初始化广州地铁
-var metro = new MTR('绍兴地铁');
-metro.addLines([line1, line1plus, line2]);
-initData();
-initEvent();
+var metro;
+$.ajax({
+    url: 'https://passport.dingstudio.cn/api',
+    method: 'get',
+    data: {
+        'format': 'json',
+        'action': 'status',
+        'requests': Date.parse(new Date()) / 1000,
+        'hostname': window.location.hostname
+    },
+    dataType: 'jsonp',
+    jsonp: 'callback',
+    success: function (res) {
+        if (res.data.authcode === 1) {
+            $.ajax({
+                url: 'https://passport.dingstudio.cn/api',
+                method: 'get',
+                data: {
+                    'format': 'json',
+                    'action': 'verify',
+                    'reqtime': Date.parse(new Date()) / 1000,
+                    'token': res.data.token,
+                    'hostname': window.location.hostname,
+                    'cors_domain': 'http://' + window.location.hostname
+                },
+                dataType: 'jsonp',
+                jsonp: 'callback',
+                success: function (res) {
+                    if (res.data.username) {
+                        $('#sso_status').html('您已作为：' + res.data.username + ' 登录，<a href="https://passport.dingstudio.cn/sso/login.php?action=dologout&url=' + encodeURIComponent(window.location.href) + '">点此</a>退出。');
+                    }
+                }
+            });
+            metro = new MTR('绍兴地铁');
+            metro.addLines([line1, line1plus, line2]);
+            initData();
+            initEvent();
+        }
+        else {
+            window.location.href = 'https://passport.dingstudio.cn/sso/login?returnUrl=' + encodeURIComponent(window.location.href);
+        }
+    },
+    error: function (e) {
+        //TODO
+    }
+});
