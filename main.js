@@ -138,6 +138,10 @@ $.ajax({
         }
         else {
             $('#sso_status').html('您尚未登录，<a href="https://passport.dingstudio.cn/sso/login?returnUrl=' + encodeURIComponent(window.location.href) + '">点此</a>登录。');
+            metro = new MTR('绍兴地铁');
+            metro.addLines([line1, line1plus, line2]);
+            initData();
+            initEvent();
             //window.location.href = 'https://passport.dingstudio.cn/sso/login?returnUrl=' + encodeURIComponent(window.location.href);
         }
     },
