@@ -48,17 +48,27 @@ var line2_T5 = new Terminal('袍中路');
 var line2_T6 = new Terminal('越东路');
 var line2_T7 = new Terminal('袍江两湖');
 var line2_T8 = new Terminal('越兴路');
+//杭绍城际
+//var lineHS_T1 = new Terminal('笛扬路');//换乘站
+var lineHS_T2 = new Terminal('稽山路');
+var lineHS_T3 = new Terminal('湖安路');
+var lineHS_T4 = new Terminal('西沙路');
+var lineHS_T5 = new Terminal('钱清');
+var lineHS_T6 = new Terminal('杨汛桥');
+var lineHS_T7 = new Terminal('衙前');
+var lineHS_T8 = new Terminal('香樟路');
 
 //每条路线站点
 var line1Terminals = [line1_T1, line1_T2, line1_T3, line1_T4, line1_T5, line1_T6, line1_T7, line1_T8, line1_T9, line1_T10, line1_T11, line1_T12, line1_T13, line1_T14, line1_T15, line1_T16, line1_T17, line1_T18, line1_T19];
 var line1plusTerminals = [line1plus_T1, line1plus_T2, line1plus_T3, line1plus_T4, line1plus_T5, line1plus_T6, line1plus_T7, line1plus_T8, line1plus_T9, line1plus_T10, line1plus_T11, line1_T12, line1plus_T13, line1plus_T14, line1_T15, line1plus_T16, line1plus_T17, line1plus_T18, line1plus_T19, line1plus_T20];
 var line2Terminals = [line2_T1, line1_T12, line2_T3, line2_T4, line2_T5, line2_T6, line2_T7, line2_T8];
-
+var lineHSTerminals = [line1_T19, lineHS_T2, lineHS_T3, lineHS_T4, lineHS_T5, lineHS_T6, lineHS_T7, lineHS_T8];
 
 //各条路线
 var line1 = new Line(line1Terminals, '一号线');
 var line1plus = new Line(line1plusTerminals, '一号线支线');
 var line2 = new Line(line2Terminals, '二号线');
+var lineHS = new Line(lineHSTerminals, '杭绍城际线');
 
 //初始化数据
 var initData = function() {
@@ -81,6 +91,7 @@ var initEvent = function() {
     startLine.on('change', function() {
         var lineIndex = $(this).val();
         var line = metro.getLine(lineIndex);
+        checkLine(metro.getLine(lineIndex).name);
         startTerminal.empty();
         line.getTerminals().forEach(function(terminal, i) {
             startTerminal.append('<option value="' + i + '">' + terminal.getName() + '</option>')
@@ -89,6 +100,7 @@ var initEvent = function() {
     endLine.on('change', function() {
         var lineIndex = $(this).val();
         var line = metro.getLine(lineIndex);
+        checkLine(metro.getLine(lineIndex).name);
         endTerminal.empty();
         line.getTerminals().forEach(function(terminal, i) {
             endTerminal.append('<option value="' + i + '">' + terminal.getName() + '</option>')
@@ -113,8 +125,10 @@ var initEvent = function() {
         $('.result').html(text.join('<br/>'));
     });
 };
-//初始化广州地铁
+
+//初始化轨道交通空间
 var metro;
+
 $.ajax({
     url: 'https://passport.dingstudio.cn/api',
     method: 'get',
@@ -147,21 +161,34 @@ $.ajax({
                     }
                 }
             });
-            metro = new MTR('绍兴地铁');
-            metro.addLines([line1, line1plus, line2]);
-            initData();
-            initEvent();
+            initApp();
         }
         else {
             $('#sso_status').html('您尚未登录，<a href="https://passport.dingstudio.cn/sso/login?returnUrl=' + encodeURIComponent(window.location.href) + '">点此</a>登录。');
-            metro = new MTR('绍兴地铁');
-            metro.addLines([line1, line1plus, line2]);
-            initData();
-            initEvent();
+            initApp();
+            //是否强制要求登录
             //window.location.href = 'https://passport.dingstudio.cn/sso/login?returnUrl=' + encodeURIComponent(window.location.href);
         }
     },
     error: function (e) {
-        //TODO
+        $('#sso_status').html('通信延迟，暂时无法获取您的登录状态。<a href="https://passport.dingstudio.cn/sso/login?returnUrl=' + encodeURIComponent(window.location.href) + '">点此</a>尝试重新登录！');
+        initApp();
     }
 });
+
+/**
+ * 初始化并载入轨道交通数据
+ * @return {anything}
+ */
+function initApp() {
+    metro = new MTR('绍兴地铁');
+    metro.addLines([line1, line1plus, line2, lineHS]);
+    initData();
+    initEvent();
+}
+
+function checkLine(lineName) {
+    if (lineName == '杭绍城际线') {
+        alert('该线路性质为城际轨道交通，耗时计算结果仅供参考！请以列车即时到站时间为准。');
+    }
+}
