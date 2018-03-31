@@ -19,6 +19,21 @@ var line1_T17 = new Terminal('瓜渚湖');
 var line1_T18 = new Terminal('金柯桥大道');
 var line1_T19 = new Terminal('笛扬路');
 //一号线支线
+var line1plus_T1 = new Terminal('鉴湖镇');
+var line1plus_T2 = new Terminal('下埠路');
+var line1plus_T3 = new Terminal('大明路');
+var line1plus_T4 = new Terminal('二环南路');
+var line1plus_T5 = new Terminal('城南大道');
+var line1plus_T6 = new Terminal('投醪河');
+var line1plus_T7 = new Terminal('塔山');
+var line1plus_T8 = new Terminal('城市广场');
+var line1plus_T9 = new Terminal('火车站');
+var line1plus_T10 = new Terminal('二环北路');
+var line1plus_T11 = new Terminal('凤林路');
+//var line1plus_T12 = new Terminal('镜湖中心');//换乘站
+var line1plus_T13 = new Terminal('奥体中心');
+var line1plus_T14 = new Terminal('绿云路');
+//var line1plus_T15 = new Terminal('站前大道');//换乘站
 var line1plus_T16 = new Terminal('群贤路');
 var line1plus_T17 = new Terminal('高教园区');
 var line1plus_T18 = new Terminal('大庆寺');
@@ -26,6 +41,7 @@ var line1plus_T19 = new Terminal('绍兴北站');
 var line1plus_T20 = new Terminal('柯桥客运站');
 //二号线主线
 var line2_T1 = new Terminal('越西路');
+//var line2_T2 = new Terminal('镜湖中心');//换乘站
 var line2_T3 = new Terminal('行政中心');
 var line2_T4 = new Terminal('中兴大道');
 var line2_T5 = new Terminal('袍中路');
@@ -35,7 +51,7 @@ var line2_T8 = new Terminal('越兴路');
 
 //每条路线站点
 var line1Terminals = [line1_T1, line1_T2, line1_T3, line1_T4, line1_T5, line1_T6, line1_T7, line1_T8, line1_T9, line1_T10, line1_T11, line1_T12, line1_T13, line1_T14, line1_T15, line1_T16, line1_T17, line1_T18, line1_T19];
-var line1plusTerminals = [line1_T1, line1_T2, line1_T3, line1_T4, line1_T5, line1_T6, line1_T7, line1_T8, line1_T9, line1_T10, line1_T11, line1_T12, line1_T13, line1_T14, line1_T15, line1plus_T16, line1plus_T17, line1plus_T18, line1plus_T19, line1plus_T20];
+var line1plusTerminals = [line1plus_T1, line1plus_T2, line1plus_T3, line1plus_T4, line1plus_T5, line1plus_T6, line1plus_T7, line1plus_T8, line1plus_T9, line1plus_T10, line1plus_T11, line1_T12, line1plus_T13, line1plus_T14, line1_T15, line1plus_T16, line1plus_T17, line1plus_T18, line1plus_T19, line1plus_T20];
 var line2Terminals = [line2_T1, line1_T12, line2_T3, line2_T4, line2_T5, line2_T6, line2_T7, line2_T8];
 
 
