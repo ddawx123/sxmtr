@@ -141,7 +141,7 @@ var initEvent = function() {
         var endTerminal = $('.end .terminal').val();
         metro.reset();
         var route = metro.search(metro.getLine(startLine).getTerminal(startTerminal), metro.getLine(endLine).getTerminal(endTerminal));
-        $('.desc').html('最短用时：' + route.time + '分钟<br/>' + route.desc);
+        $('.desc').html('最短用时约：' + route.time + '分钟<br/>' + route.desc);
         var text = route.nodes.map(function(desc) {
             return [desc.start, desc.line, desc.count + '个站', desc.end].join('  ');
         });

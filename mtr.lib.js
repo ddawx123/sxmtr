@@ -132,7 +132,7 @@ Route.prototype.init = function() {
         //最后终点站
         endTerminalName = _.last(tmp).name;
         this.transferCount = transferCount;
-        this.desc += '乘坐' + count + '个站到达终点站' + endTerminalName + '，总换乘' + transferCount + '次，耗时' + this.time + '分钟';
+        this.desc += '乘坐' + count + '个站到达终点站' + endTerminalName + '，总换乘' + transferCount + '次，耗时约' + this.time + '分钟';
         this.nodes.push({
             start: currentTerminalName,
             end: endTerminalName,
