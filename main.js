@@ -88,11 +88,11 @@ var lineHSTerminals = [line1_T19, lineHS_T2, lineHS_T3, lineHS_T4, lineHS_T5, li
 var lineFQTerminals = [lineFQ_T1, lineFQ_T2, lineFQ_T3, lineFQ_T4, line1_T9, lineFQ_T6, lineFQ_T7, lineFQ_T8, lineFQ_T9, lineFQ_T10, lineFQ_T11];
 
 //各条路线
-var line1 = new Line(line1Terminals, '一号线');
-var line1plus = new Line(line1plusTerminals, '一号线支线');
-var line2 = new Line(line2Terminals, '二号线');
-var lineHS = new Line(lineHSTerminals, '杭绍城际线');
-var lineFQ = new Line(lineFQTerminals, '风情旅游新干线');
+var line1 = new Line(line1Terminals, '一号线（鉴湖镇-笛扬路）');
+var line1plus = new Line(line1plusTerminals, '一号线（鉴湖镇-柯桥客运站）');
+var line2 = new Line(line2Terminals, '二号线（兰亭-越兴路）');
+var lineHS = new Line(lineHSTerminals, '杭绍城际线（香樟路-笛扬路）');
+var lineFQ = new Line(lineFQTerminals, '风情旅游新干线（钱清-驿亭）');
 
 //初始化数据
 var initData = function() {
