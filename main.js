@@ -66,7 +66,7 @@ var lineHS_T5 = new Terminal('柯桥西站');
 var lineHS_T6 = new Terminal('钱清');
 var lineHS_T7 = new Terminal('杨汛桥');
 var lineHS_T8 = new Terminal('衙前');
-var lineHS_T9 = new Terminal('香樟路');
+var lineHS_T9 = new Terminal('姑娘桥');
 //风情旅游新干线（城际通勤铁路）
 var lineFQ_T1 = new Terminal('钱清');
 var lineFQ_T2 = new Terminal('兴工路');
@@ -91,7 +91,7 @@ var lineFQTerminals = [lineFQ_T1, lineFQ_T2, lineFQ_T3, lineFQ_T4, line1_T9, lin
 var line1 = new Line(line1Terminals, '一号线（鉴湖镇-笛扬路）');
 var line1plus = new Line(line1plusTerminals, '一号线（鉴湖镇-柯桥客运站）');
 var line2 = new Line(line2Terminals, '二号线（兰亭-越兴路）');
-var lineHS = new Line(lineHSTerminals, '杭绍城际线（香樟路-笛扬路）');
+var lineHS = new Line(lineHSTerminals, '杭绍城际线（姑娘桥-笛扬路）');
 var lineFQ = new Line(lineFQTerminals, '风情旅游新干线（钱清-驿亭）');
 
 //初始化数据
