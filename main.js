@@ -188,14 +188,14 @@ $.ajax({
             initApp();
         }
         else {
-            $('#sso_status').html('您尚未登录，<a href="https://passport.dingstudio.cn/sso/login?returnUrl=' + encodeURIComponent(window.location.href) + '">点此</a>登录。');
+            $('#sso_status').html('您尚未登录，<a href="https://passport.dingstudio.cn/sso/login?returnUrl=' + btoa(encodeURIComponent(window.location.href)) + '">点此</a>登录。');
             initApp();
             //是否强制要求登录
             //window.location.href = 'https://passport.dingstudio.cn/sso/login?returnUrl=' + encodeURIComponent(window.location.href);
         }
     },
     error: function (e) {
-        $('#sso_status').html('通信延迟，暂时无法获取您的登录状态。<a href="https://passport.dingstudio.cn/sso/login?returnUrl=' + encodeURIComponent(window.location.href) + '">点此</a>尝试重新登录！');
+        $('#sso_status').html('通信延迟，暂时无法获取您的登录状态。<a href="https://passport.dingstudio.cn/sso/login?returnUrl=' + btoa(encodeURIComponent(window.location.href)) + '">点此</a>尝试重新登录！');
         initApp();
     }
 });
